@@ -16,6 +16,16 @@ class CSV:
                 # Dates are changed from strings to date objects
                 if object is not sublist[0]:
                     object = datetime.strptime(object, '%Y/%m/%d')
-            # First object contains name of school and is reused for key
             visits[(sublist[0])] = sublist
     print(visits)
+
+
+class Operations(CSV):
+    # Class contains all functions that will be used wih the user interface
+    # Returns total number of visits
+    count = 0
+    for key in CSV.visits:
+        if isinstance(CSV.visits[key], list):
+            # Filters out school names
+            count += len(CSV.visits[key])
+    print(count)
