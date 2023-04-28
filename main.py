@@ -29,6 +29,9 @@ class Dictionary(CSV):
         school_names.append(sublist[0])
         sublist.remove(sublist[0])
     # Class assigns key-value pairs (school, dates) using school_names
-    visits = dict(zip(school_names,CSV.csv_list))
+    visits = dict(zip(school_names, CSV.csv_list))
 
 
+class User(Dictionary):
+    # Class acts as the user interface
+    print("Welcome to the School Visits Python Project")
