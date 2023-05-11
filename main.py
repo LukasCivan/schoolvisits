@@ -1,5 +1,6 @@
 import csv
 from datetime import datetime
+from datetime import date
 
 
 class CSV:
@@ -33,5 +34,22 @@ class Dictionary(CSV):
 
 
 class User(Dictionary):
-    # Class acts as the user interface
-    print("Welcome to the School Visits Python Project")
+    # Class produces printed message for user
+    # Establishes today's date
+    today_unformatted = date.today()
+    today = today_unformatted.strftime('%Y/%m/%d')
+    # Establishes if there is a visit today
+    visit_today = ()
+    for key in Dictionary.visits:
+        for value in key:
+            if value == today:
+                visit_today = "There is a visit today"
+                key = "at", today_school,"."
+            else:
+                visit_today = "There are no visits today."
+                key = "You can rest!"
+    print(
+        "Welcome to the School Visits Project \n\n",
+        visit_today, key
+    )
+
