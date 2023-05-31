@@ -24,32 +24,32 @@ class Date(CSV):
 
 
 class Dictionary(CSV):
-    # Class removes school names and appends to separate list
+    # Class creates dictionary, keys = dates and values = school names
     school_names = list()
     for sublist in CSV.csv_list:
         school_names.append(sublist[0])
-        sublist.remove(sublist[0])
-    # Class assigns key-value pairs (school, dates) using school_names
-    visits = dict(zip(school_names, CSV.csv_list))
+    visits = dict()
+    for list in CSV.csv_list:
+        for item in list:
+            if item in school_names:
+                pass
+            else:
+                visits[item] = list[0]
+    print(visits)
 
 
 class User(Dictionary):
     # Class produces printed message for user
-    # Establishes today's date
-    today_unformatted = date.today()
-    today = today_unformatted.strftime('%Y/%m/%d')
-    # Establishes if there is a visit today
-    visit_today = ()
-    for key in Dictionary.visits:
-        for value in key:
-            if value == today:
-                visit_today = "There is a visit today"
-                key = "at", today_school,"."
-            else:
-                visit_today = "There are no visits today."
-                key = "You can rest!"
+    # Establishes today's date as today variable
+    today_un_formatted = date.today()
+    today = today_un_formatted.strftime('%Y/%-m/%d')
+    if today in Dictionary.visits:
+        today_visit = "a school visit today"
+    else:
+        today_visit = "no visits today."
+    # Establishes if there is a school visit today
     print(
-        "Welcome to the School Visits Project \n\n",
-        visit_today, key
+        "Welcome to the School Visits Project\n"
+        "There are", len(Dictionary.school_names), "schools and",
+        len(Dictionary.visits), "visits.\nYou have", today_visit,
     )
-
